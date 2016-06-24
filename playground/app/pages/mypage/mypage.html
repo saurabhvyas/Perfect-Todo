@@ -1,0 +1,61 @@
+<!--
+  Generated template for the MypagePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar primary *navbar>
+  <ion-title >Todo's</ion-title>
+</ion-navbar>
+
+<ion-content padding class="mypage">
+  <h2> Pending : {{items.length}}  </h2>
+  
+  
+  <ion-list >
+    
+  <ion-item-sliding *ngFor = "let item of items; let i=index"> 
+    <ion-item >
+      <ion-icon #myelement *ngIf="parameter" md="md-heart" ></ion-icon>
+      <h2 #myelement2 >{{   item }}</h2>
+    </ion-item>
+    <ion-item-options side="left">
+      <button danger  (click)='remove(item,i)' > 
+       <ion-icon  ios="ios-trash" md="md-trash"></ion-icon>
+       
+      </button>
+       </ion-item-options>
+       
+       
+      <ion-item-options side="right">
+          <button secondary (click)='like(item,i)'>
+           <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
+       
+      </button>
+        
+        </ion-item-options>
+        
+    
+   
+  </ion-item-sliding>
+</ion-list>
+  
+  <h2>Completed : {{completeditems.length}} </h2> 
+  
+  <ion-list>
+     <ion-item   *ngFor = "let citem of completeditems">  
+      
+      <li>{{   citem }}</li>
+    </ion-item>
+  
+    
+    </ion-list>
+    
+  
+  <span  (click)="newpage()" id="cta">
+    
+    
+    <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    </span>
+  
+</ion-content>
