@@ -158,6 +158,20 @@ this.data.getcompletedtodo().then((tx)=> {
         
         console.log("yes clicked");
         
+        this.data.removetodo(item.id).then((tx)=> {
+         
+          console.log(tx.res.rows);
+          
+          
+          
+        },
+       (err)=> {
+          
+          console.log('err' + err);
+          
+        });
+        
+        
          console.log("removed " + i );
     
     this.todoitems.splice(i,1);

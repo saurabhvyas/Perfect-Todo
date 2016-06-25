@@ -63,9 +63,14 @@ addcompletedtodo(todo:string){
   
 }
 
-removetodo(){
+removetodo(id:number){
   
   // need to implement this
+  
+   return this.storage.query("DELETE  FROM todo WHERE id=' " + id + " ' ") ;
+   
+   
+  
 }
 
   getodo() {
