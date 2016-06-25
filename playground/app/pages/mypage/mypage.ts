@@ -223,7 +223,7 @@ this.data.getcompletedtodo().then((tx)=> {
         this.data.removetodo(item.id).then((tx)=> {
          
           console.log(tx.res.rows);
-          
+          this.todoitems.splice(i,1);
           
           
         },
@@ -236,7 +236,7 @@ this.data.getcompletedtodo().then((tx)=> {
         
          console.log("removed " + i );
     
-    this.todoitems.splice(i,1);
+    
         
       }
     },
@@ -272,6 +272,20 @@ this.data.getcompletedtodo().then((tx)=> {
 
 
    this.todoitems.splice(i,1);
+   
+          this.data.removetodo(item.id).then((tx)=> {
+         
+          console.log(tx.res.rows);
+          this.todoitems.splice(i,1);
+          
+          
+        },
+       (err)=> {
+          
+          console.log('err' + err);
+          
+        });
+   
    this.completeditems.push(item);
    
    
