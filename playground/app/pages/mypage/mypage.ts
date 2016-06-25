@@ -4,6 +4,7 @@ import {NewpagePage} from '../newpage/newpage';
 import {Storage} from 'ionic-angular';
 import {SqlStorage,Alert} from 'ionic-angular';
 import {todo} from '../todo';
+import {Modal,ViewController} from 'ionic-angular';
 
 import {DataService} from '../../providers/data/data';
 
@@ -15,10 +16,58 @@ import {DataService} from '../../providers/data/data';
 */
 
 
+
+
+@Component({
+  template: `
+  <ion-content padding>
+    <h2>{{todo.todo}}</h2>
+    
+ <h3>  Description </h3>
+ 
+ <p> {{todo.description}} </p>
+ 
+ <h3>
+ 
+ Priority
+ 
+ </h3>
+ 
+ <p>
+ 
+ {{todo.priority}}
+ </p>
+   
+    <button (click)="close()">Close</button>
+  </ion-content>`
+})
+class MyModal {
+  
+  todo:todo;
+  
+  constructor(params:NavParams,
+    private viewCtrl: ViewController) {
+      
+      this.todo=params.get('todo');
+      
+      
+    }
+
+  close() {
+    this.viewCtrl.dismiss();
+  }
+}
+
+
 @Component({
   templateUrl: 'build/pages/mypage/mypage.html',
 })
+
+
+
 export class MypagePage {
+  
+  
   
  // items:string[]=['Pasta','Pizza','Chocolate Cake','Noodles','Origami Sheet'];
   todoitems:todo[]=[
@@ -54,6 +103,19 @@ export class MypagePage {
   
   completeditems:todo[]=[];
   
+  
+  clickeventhandler=(tod:todo)=>{
+    
+    var  todomodal = Modal.create(MyModal,{"todo":tod});
+    
+    this.nav.present(todomodal);
+    
+    
+    
+  
+    
+    
+  }
   
   ionViewWillEnter=()=>  {
     

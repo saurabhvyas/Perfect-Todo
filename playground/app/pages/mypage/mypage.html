@@ -15,10 +15,10 @@
   <ion-list >
     
   <ion-item-sliding *ngFor = "let item of todoitems; let i=index"> 
-    <ion-item >
+    <ion-item (click)="clickeventhandler(item)" >
       <ion-icon #myelement *ngIf="parameter" md="md-heart" ></ion-icon>
       <h2 #myelement2 >{{   item.todo }}</h2>
-    </ion-item>
+    </ion-item> 
     <ion-item-options side="left">
       <button danger  (click)='remove(item,i)' > 
        <ion-icon  ios="ios-trash" md="md-trash"></ion-icon>
@@ -43,7 +43,7 @@
   <h2>Completed : {{completeditems.length}} </h2> 
   
   <ion-list>
-     <ion-item   *ngFor = "let citem of completeditems">  
+     <ion-item  (click)="clickeventhandler(citem)"  *ngFor = "let citem of completeditems">  
       
       <li>{{   citem.todo }}</li>
     </ion-item>
