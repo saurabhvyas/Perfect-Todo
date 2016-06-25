@@ -3,6 +3,7 @@ import { NavParams,NavController } from 'ionic-angular';
 import {NewpagePage} from '../newpage/newpage';
 import {Storage} from 'ionic-angular';
 import {SqlStorage,Alert} from 'ionic-angular';
+import {todo} from '../todo';
 
 import {DataService} from '../../providers/data/data';
 
@@ -20,6 +21,28 @@ import {DataService} from '../../providers/data/data';
 export class MypagePage {
   
   items:string[]=['Pasta','Pizza','Chocolate Cake','Noodles','Origami Sheet'];
+  todoitems:todo[]=[
+    
+    {
+    
+    id:1,
+    todo:'eat chole bature' ,
+    description:  'test',
+    priority:'high'
+    
+    
+  },
+  
+  
+  {
+    id:2,
+    todo:'wake up at 5 am',
+    description: 'test',
+    priority:'low'
+    
+  }];
+  
+  
   
   likedtodo:string="";
   
