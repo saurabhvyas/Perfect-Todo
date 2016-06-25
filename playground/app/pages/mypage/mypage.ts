@@ -20,14 +20,58 @@ export class MypagePage {
   
   newitem : string ="";
   
+  data:any;
+  
   completeditems:string[]=[];
   
   
-  ionViewLoaded() {
+  ionViewWillEnter=()=>  {
     
     console.log("I'm alive!");
   //  console.log(this.newitem)
    // this.items.push(this.newitem);
+   
+   
+   
+   this.data.getodo().then(
+  
+  
+  
+  (tx) => {
+  
+  console.log(tx.res.rows);
+  
+ var newarr = Array.from(tx.res.rows);
+ 
+ console.log(newarr);
+ 
+ var newar2=newarr.map((i)=>{
+   
+  // console.log(i);
+   
+   return i.todo;
+   
+   
+ });
+ 
+ this.items=newar2;
+ 
+ 
+ 
+ 
+ console.log(newar2);
+ 
+ 
+ 
+},function(err){
+  
+  console.log(err);
+  
+}
+
+
+);
+
     
   }
   
@@ -68,43 +112,10 @@ export class MypagePage {
 
   constructor(private nav: NavController,params:NavParams,data:DataService ){
     
- data.getodo().then(
-  
-  
-  
-  (tx) => {
-  
-  console.log(tx.res.rows);
-  
- var newarr = Array.from(tx.res.rows);
+    console.log('constructor visited');
+    this.data=data;
+    
  
- console.log(newarr);
- 
- var newar2=newarr.map((i)=>{
-   
-   return i.todo;
-   
-   
- });
- 
- this.items=newar2;
- 
- 
- 
- 
- console.log(newar2);
- 
- 
- 
-},function(err){
-  
-  console.log(err);
-  
-}
-
-
-);
-
    
 
   }

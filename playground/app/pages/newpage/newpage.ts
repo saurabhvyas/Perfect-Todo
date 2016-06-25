@@ -24,16 +24,17 @@ export class NewpagePage {
     console.log(this.content);
     
    
-    this.data.addtodo(this.content).then(function(tx){
+    this.data.addtodo(this.content).then((tx)=>{
       console.log(tx);
       
+         this.nav.pop();
     },
     function(err){
       console.log(err);
       
     });
     
-    this.nav.pop();
+ 
     
     
   }
