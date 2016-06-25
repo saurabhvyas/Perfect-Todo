@@ -20,7 +20,7 @@ import {DataService} from '../../providers/data/data';
 })
 export class MypagePage {
   
-  items:string[]=['Pasta','Pizza','Chocolate Cake','Noodles','Origami Sheet'];
+ // items:string[]=['Pasta','Pizza','Chocolate Cake','Noodles','Origami Sheet'];
   todoitems:todo[]=[
     
     {
@@ -52,7 +52,7 @@ export class MypagePage {
   
   data:any;
   
-  completeditems:string[]=[];
+  completeditems:todo[]=[];
   
   
   ionViewWillEnter=()=>  {
@@ -79,12 +79,20 @@ export class MypagePage {
    
   // console.log(i);
    
-   return i.todo;
+   return {
+     id:i.id,
+     todo:i.todo,
+     description:i.description,
+     priority:i.priority
+     
+   }
+   
    
    
  });
+ this.todoitems=newar2;
  
- this.items=newar2;
+// this.items=newar2;
  
  
  
@@ -115,7 +123,13 @@ this.data.getcompletedtodo().then((tx)=> {
    
   // console.log(i);
    
-   return i.todo;
+   return {
+     id:i.id,
+     todo:i.todo,
+     description:i.description,
+     priority:i.priority     
+   }
+   
    
    
  });
@@ -146,7 +160,7 @@ this.data.getcompletedtodo().then((tx)=> {
         
          console.log("removed " + i );
     
-    this.items.splice(i,1);
+    this.todoitems.splice(i,1);
         
       }
     },
@@ -176,17 +190,20 @@ this.data.getcompletedtodo().then((tx)=> {
     
   }
   
-  private like=(value:any,i:number)=>{
+  private like=(item:any,i:number)=>{
     
     
 
 
-   this.items.splice(i,1);
-   this.completeditems.push(value);
+   this.todoitems.splice(i,1);
+   this.completeditems.push(item);
+   
    
    // this.items[i]="I liked " + this.items[i];
     
-  this.data.addcompletedtodo(value).then((tx)=> {
+  
+    
+  this.data.addcompletedtodo(item.todo).then((tx)=> {
     
     console.log(tx.res);
     

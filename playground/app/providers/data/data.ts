@@ -9,7 +9,10 @@ storage=null;
 
   constructor() {
     this.storage = new Storage(SqlStorage);
-    this.storage.query('CREATE TABLE IF NOT EXISTS todo (id INTEGER PRIMARY KEY , todo TEXT, description TEXT , priority TEXT)');
+  //  this.storage.query('DROP TABLE todo');
+    //this.storage.query('DROP TABLE completed_todo');
+    
+   this.storage.query('CREATE TABLE IF NOT EXISTS todo (id INTEGER PRIMARY KEY , todo TEXT, description TEXT , priority TEXT)');
     this.storage.query('CREATE TABLE IF NOT EXISTS completed_todo (id INTEGER PRIMARY KEY , todo TEXT, description TEXT , priority TEXT)');
   }
 
@@ -30,7 +33,7 @@ addtodo(todo:string){
   });
   
  var description= "put description here";
- var priorty = "put priority here";
+ var priority = "put priority here";
  
   
    return this.storage.query('INSERT INTO todo VALUES(? , ?,?,?)',[++id,todo,description,priority]);
@@ -52,7 +55,11 @@ addcompletedtodo(todo:string){
     
   });
   
-   return this.storage.query('INSERT INTO completed_todo VALUES(? , ?)',[++id,todo]);
+   var description= "put description here";
+ var priority = "put priority here";
+ 
+  
+   return this.storage.query('INSERT INTO completed_todo VALUES(? , ?,?,?)',[++id,todo,description,priority]);
   
 }
 
@@ -62,12 +69,12 @@ removetodo(){
 }
 
   getodo() {
-    return this.storage.query('SELECT id, todo FROM todo');
+    return this.storage.query('SELECT id, todo ,description , priority FROM todo');
   }
   
   getcompletedtodo(){
     
-    return this.storage.query('SELECT id, todo FROM completed_todo');
+    return this.storage.query('SELECT id, todo , description , priority FROM completed_todo');
     
   }
 }

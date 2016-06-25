@@ -9,15 +9,15 @@
 </ion-navbar>
 
 <ion-content padding class="mypage">
-  <h2> Pending : {{items.length}}  </h2>
+  <h2> Pending : {{todoitems.length}}  </h2>
   
   
   <ion-list >
     
-  <ion-item-sliding *ngFor = "let item of items; let i=index"> 
+  <ion-item-sliding *ngFor = "let item of todoitems; let i=index"> 
     <ion-item >
       <ion-icon #myelement *ngIf="parameter" md="md-heart" ></ion-icon>
-      <h2 #myelement2 >{{   item }}</h2>
+      <h2 #myelement2 >{{   item.todo }}</h2>
     </ion-item>
     <ion-item-options side="left">
       <button danger  (click)='remove(item,i)' > 
@@ -45,7 +45,7 @@
   <ion-list>
      <ion-item   *ngFor = "let citem of completeditems">  
       
-      <li>{{   citem }}</li>
+      <li>{{   citem.todo }}</li>
     </ion-item>
   
     
