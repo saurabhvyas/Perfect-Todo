@@ -44,6 +44,8 @@ import {DataService} from '../../providers/data/data';
 class MyModal {
   
   todo:todo;
+
+  
   
   constructor(params:NavParams,
     private viewCtrl: ViewController) {
@@ -67,29 +69,13 @@ class MyModal {
 
 export class MypagePage {
   
-  
+    completed:boolean=false;
+    
+    
   
  // items:string[]=['Pasta','Pizza','Chocolate Cake','Noodles','Origami Sheet'];
-  todoitems:todo[]=[
-    
-    {
-    
-    id:1,
-    todo:'eat chole bature' ,
-    description:  'test',
-    priority:'high'
-    
-    
-  },
+  todoitems:todo[]=[];
   
-  
-  {
-    id:2,
-    todo:'wake up at 5 am',
-    description: 'test',
-    priority:'low'
-    
-  }];
   
   
   
@@ -118,6 +104,21 @@ export class MypagePage {
   }
   
   ionViewWillEnter=()=>  {
+    
+        if (this.todoitems.length===0) {
+      
+      this.completed=true;
+      console.log('completed!');
+      
+    }
+    
+    else{
+      this.completed=false;
+      
+      
+      console.log('not completed');
+      
+    }
     
     console.log("I'm alive!");
   //  console.log(this.newitem)
@@ -314,6 +315,12 @@ this.data.getcompletedtodo().then((tx)=> {
 
   constructor(private nav: NavController,params:NavParams,data:DataService  ){
     this.alert=alert;
+    
+ //   console.log(this.todoitems);
+    
+    
+
+    
     
     console.log('constructor visited');
     this.data=data;

@@ -11,7 +11,7 @@
 <ion-content padding class="mypage">
   <h2> Pending : {{todoitems.length}}  </h2>
   
-  
+  <h2 *ngIf="completed" > Completed yayayayaayay :) </h2>
   <ion-list >
     
   <ion-item-sliding *ngFor = "let item of todoitems; let i=index"> 
