@@ -103,9 +103,8 @@ export class MypagePage {
     
   }
   
-  ionViewWillEnter=()=>  {
-    
-        if (this.todoitems.length===0) {
+  evaluatefinished=()=> {
+       if (this.todoitems.length===0) {
       
       this.completed=true;
       console.log('completed!');
@@ -115,11 +114,19 @@ export class MypagePage {
     else{
       this.completed=false;
       
+      console.log('length of todo items is' +this.todoitems.length);
       
       console.log('not completed');
       
     }
     
+    
+  }
+  
+  ionViewWillEnter=()=>  {
+    
+     
+     
     console.log("I'm alive!");
   //  console.log(this.newitem)
    // this.items.push(this.newitem);
@@ -155,6 +162,8 @@ export class MypagePage {
  });
  this.todoitems=newar2;
  
+ 
+ this.evaluatefinished();
 // this.items=newar2;
  
  
@@ -212,6 +221,10 @@ this.data.getcompletedtodo().then((tx)=> {
   
   private remove=(item,i)=> {
     
+    
+  //  this.evaluatefinished();
+    
+    
     var alert = Alert.create({
       
       title:'Are you sure you want to delete this todo ?',
@@ -221,12 +234,15 @@ this.data.getcompletedtodo().then((tx)=> {
         
         console.log("yes clicked");
         
+       
+        
+        
         this.data.removetodo(item.id).then((tx)=> {
          
           console.log(tx.res.rows);
           this.todoitems.splice(i,1);
           
-          
+           this.evaluatefinished();
         },
        (err)=> {
           
@@ -268,6 +284,7 @@ this.data.getcompletedtodo().then((tx)=> {
   }
   
   private like=(item:any,i:number)=>{
+   
     
     
 
@@ -278,7 +295,7 @@ this.data.getcompletedtodo().then((tx)=> {
          
           console.log(tx.res.rows);
           this.todoitems.splice(i,1);
-          
+           this.evaluatefinished();
           
         },
        (err)=> {
@@ -319,6 +336,7 @@ this.data.getcompletedtodo().then((tx)=> {
  //   console.log(this.todoitems);
     
     
+this.evaluatefinished();
 
     
     
