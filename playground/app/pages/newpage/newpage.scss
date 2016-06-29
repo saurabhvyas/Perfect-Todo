@@ -3,20 +3,21 @@
 }
 
 
-#heading{
+#newpageheading{
    
     
     
     
     
+    margin-left:20px;
     
     
-    color:white;
-    position:absolute;
+  //  color:white;
     
-    top:50px;
+    
+  //  top:50px;
     z-index:99;
-    left:20%;
+    //left:20%;
     
     
     
@@ -24,11 +25,11 @@
 
 
 .newpage input {
-  margin-left:20px;
+
   
     
    
-    width:80%;
+   // width:80%;
     height: 350px;
     
     
@@ -36,16 +37,29 @@
 
 #texttodo{
     
-width:80%;
+width:85%;
 height:200px;
 margin-left:10%;
 margin-top:15px;
 margin-bottom:15px;
+text-indent:10px;
+line-height: normal; 
+    
+}
+
+#texttitle{
+    
+width:85%;
+height:70px;
+margin-left:10%;
+margin-top:15px;
+margin-bottom:15px;
+text-indent:10px;
+line-height: 0;
 
 
     
 }
-
 
 #submit {
     

@@ -311,7 +311,7 @@ this.data.getcompletedtodo().then((tx)=> {
     
   
     
-  this.data.addcompletedtodo(item.todo).then((tx)=> {
+  this.data.addcompletedtodo(item.todo,item.priority,item.description).then((tx)=> {
     
     console.log(tx.res);
     

@@ -13,18 +13,28 @@
   
   <div id="todo">
     
-    <img src="build/2.jpg"/>
+  
     
     
-   <h2 id="heading"> please enter your todo:) </h2>
+   <h2 id="newpageheading" > Title </h2>
    
-  <input [(ngModel)]="content"  type="text" id="texttodo" />
+  <input placeholder="e.g Building a snowman with elsa" [(ngModel)]="todo"  type="text" id="texttitle" />
+  
+  <h2 id="newpageheading"> Description </h2>
   
   
+  <input placeholder="e.g First get snow , then build a plan .." [(ngModel)]="description" type="text" id="texttodo" />
  
-
+  
+  
+    <h2 id="newpageheading" > Priority </h2>
+ 
+ 
+ <button (click)="setpriority()" id="prioritybtn" > Set Priority </button>
+ 
+ 
  <button (click)="addtodo()" id="submit">
-   submit
+   Add Todo
    </button>
    
   
