@@ -12,15 +12,15 @@ storage=null;
   //  this.storage.query('DROP TABLE todo');
     //this.storage.query('DROP TABLE completed_todo');
     
-   this.storage.query('CREATE TABLE IF NOT EXISTS todo (id INTEGER PRIMARY KEY , todo TEXT, description TEXT , priority TEXT)');
-    this.storage.query('CREATE TABLE IF NOT EXISTS completed_todo (id INTEGER PRIMARY KEY , todo TEXT, description TEXT , priority TEXT)');
+   this.storage.query('CREATE TABLE IF NOT EXISTS saurabh_todo (id INTEGER PRIMARY KEY , todo TEXT, description TEXT , priority TEXT)');
+    this.storage.query('CREATE TABLE IF NOT EXISTS saurabh_completed_todo (id INTEGER PRIMARY KEY , todo TEXT, description TEXT , priority TEXT)');
   }
 
 addtodo(todo:string,priority:string,description:string){
  
  var id;
  
-  this.storage.query('SELECT MAX(Id) from todo  ').then(function(tx){
+  this.storage.query('SELECT MAX(Id) from saurabh_todo  ').then(function(tx){
     
   id=tx.res;
   
@@ -45,14 +45,14 @@ Edit: Found the plugin! jquery.placeholder.min.js provides you with both full st
  // var priority = "medium";
  
   
-   return this.storage.query('INSERT INTO todo VALUES(? , ?,?,?)',[++id,todo,description,priority]);
+   return this.storage.query('INSERT INTO saurabh_todo VALUES(? , ?,?,?)',[++id,todo,description,priority]);
 }
 
 addcompletedtodo(todo:string,priority:string,description:string){
   
   var id;
  
-  this.storage.query('SELECT MAX(Id) from completed_todo  ').then(function(tx){
+  this.storage.query('SELECT MAX(Id) from saurabh_completed_todo  ').then(function(tx){
     
   id=tx.res;
   
@@ -75,7 +75,7 @@ Edit: Found the plugin! jquery.placeholder.min.js provides you with both full st
  
  */
   
-   return this.storage.query('INSERT INTO completed_todo VALUES(? , ?,?,?)',[++id,todo,description,priority]);
+   return this.storage.query('INSERT INTO saurabh_completed_todo VALUES(? , ?,?,?)',[++id,todo,description,priority]);
   
 }
 
@@ -83,19 +83,19 @@ removetodo(id:number){
   
   // need to implement this
   
-   return this.storage.query("DELETE  FROM todo WHERE id=' " + id + " ' ") ;
+   return this.storage.query("DELETE  FROM saurabh_todo WHERE id=' " + id + " ' ") ;
    
    
   
 }
 
   getodo() {
-    return this.storage.query('SELECT id, todo ,description , priority FROM todo');
+    return this.storage.query('SELECT id, todo ,description , priority FROM saurabh_todo');
   }
   
   getcompletedtodo(){
     
-    return this.storage.query('SELECT id, todo , description , priority FROM completed_todo');
+    return this.storage.query('SELECT id, todo , description , priority FROM saurabh_completed_todo');
     
   }
 }

@@ -143,11 +143,14 @@ export class MypagePage {
   
  var newarr = Array.from(tx.res.rows);
  
- console.log(newarr);
+ console.log('teffffst');
+ 
+ console.dir(  newarr[0]);
+ 
  
  var newar2=newarr.map((i)=>{
    
-  // console.log(i);
+  
    
    return {
      id:i.id,
@@ -155,7 +158,7 @@ export class MypagePage {
      description:i.description,
      priority:i.priority
      
-   }
+   };
    
    
    
