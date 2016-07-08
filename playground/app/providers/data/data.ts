@@ -55,7 +55,7 @@ Edit: Found the plugin! jquery.placeholder.min.js provides you with both full st
   
   // return this.storage.query('INSERT INTO saurabh_todo VALUES(?,?,?,?)',[id,todo,description,priority]);
    
-    return this.storage.query('INSERT INTO saurabh_todo(id,todo,description,priority) VALUES(?,?,?,?)',[6,'test','test','test']);
+    return this.storage.query('INSERT INTO saurabh_todo(id,todo,description,priority) VALUES(?,?,?,?)',[6,todo,description,priority]);
 }
 
 addcompletedtodo(todo:string,priority:string,description:string){

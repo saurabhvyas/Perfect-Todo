@@ -38,24 +38,27 @@
 #texttodo{
     
 width:85%;
-height:200px;
+height:100px;
 margin-left:10%;
 margin-top:15px;
 margin-bottom:15px;
 text-indent:10px;
+
+  border:1px solid  lightgrey;
 line-height: normal; 
     
 }
 
 #texttitle{
-    
+   border:1px solid  lightgrey;
+
 width:85%;
-height:70px;
+
 margin-left:10%;
 margin-top:15px;
 margin-bottom:15px;
-text-indent:10px;
-line-height: 0;
+
+
 
 
     
@@ -67,9 +70,20 @@ line-height: 0;
     margin-right:10px;
     
     
-    
+    position:fixed;
+    bottom:0px;
+
     display:block;
     width:95%;
     
     
+}
+
+#prioritybtn{
+
+    margin-left:10px;
+    background:white;
+    border:1px solid orange;
+     color:orange;
+
 }
