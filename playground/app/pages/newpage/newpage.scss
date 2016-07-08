@@ -65,6 +65,7 @@ margin-bottom:15px;
 }
 
 #submit {
+
     
     margin-left:10px;
     margin-right:10px;
@@ -72,6 +73,7 @@ margin-bottom:15px;
     
     position:fixed;
     bottom:0px;
+height:10%;
 
     display:block;
     width:95%;
@@ -79,9 +81,17 @@ margin-bottom:15px;
     
 }
 
-#prioritybtn{
+.center{
+    text-align:center;
+    
+}
 
+#prioritybtn{
+       
     margin-left:10px;
+    margin-right:10px;
+    width:90%;
+
     background:white;
     border:1px solid orange;
      color:orange;
