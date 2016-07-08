@@ -3,6 +3,8 @@ import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 
 import {MypagePage} from './pages/mypage/mypage';
+import{Splashscreen} from 'ionic-native';
+
 import {DataService} from './providers/data/data';
 import {TestPage} from './pages/test/test';
 
@@ -22,10 +24,17 @@ export class MyApp {
 
     platform.ready().then(() => {
       
+Splashscreen.hide();
       
         
+/* if(navigator && navigator.splashscreen) {
+setTimeout(()=> {
+navigator.splashscreen.hide();
+}, 100);
+}
 
-      
+*/
+
       console.log('testttt');
       
       // Okay, so the platform is ready and our plugins are available.
