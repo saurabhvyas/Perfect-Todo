@@ -89,7 +89,10 @@ export class MypagePage {
   
   completeditems:todo[]=[];
   
+  toggle:boolean=false;
   
+  error:any;
+
   clickeventhandler=(tod:todo)=>{
     
     var  todomodal = Modal.create(MyModal,{"todo":tod});
@@ -178,7 +181,9 @@ export class MypagePage {
  
 },function(err){
   
-  console.log(err);
+  this.toggle=true;
+  this.error=err.message;
+  console.log('err is ' + err.message);
   
 }
 

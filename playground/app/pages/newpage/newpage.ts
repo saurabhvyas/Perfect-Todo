@@ -33,12 +33,12 @@ export class NewpagePage {
          this.nav.pop();
     },
     function(err){
-      console.log(err);
+      console.log( err);
       
     });
     
  
-    
+   
     
   }
   
