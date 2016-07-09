@@ -25,7 +25,7 @@ export class MyApp {
     platform.ready().then(() => {
       
 Splashscreen.hide();
-      
+
         
 /* if(navigator && navigator.splashscreen) {
 setTimeout(()=> {
@@ -35,7 +35,7 @@ navigator.splashscreen.hide();
 
 */
 
-      console.log('testttt');
+    //  console.log('testttt');
       
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
