@@ -11,16 +11,27 @@
 
 
 <ion-slides pager [options]="mySlideOptions"> 
-  <ion-slide style="background-color: green">
-    <h2>Slide 1</h2>
+  <ion-slide style="background-color: white">
+    <h2>Welcome to Perfect Todo</h2>
+
+    <h3> A simple app to manage dails tasks for perfectionists </h3>
+
   </ion-slide>
 
-  <ion-slide style="background-color: blue">
-    <h2>Slide 2</h2>
+  <ion-slide style="background-color: light blue">
+
+    <h2>Just Swype left to remove a todo and right to complete a todo</h2>
+<ion-img src="swype.gif">
+
+</ion-img>
+    <button primary id="welcome_cta" (click)="redirect()">
+
+
+Okay Got It :) 
+      </button>
+
   </ion-slide>
 
-  <ion-slide style="background-color: red">
-    <h2>Slide 3</h2>
-  </ion-slide>
+
 
 </ion-slides>

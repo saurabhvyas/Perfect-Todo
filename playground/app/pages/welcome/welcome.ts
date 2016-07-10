@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import {MypagePage} from '../mypage/mypage';
 import {Slides} from 'ionic-angular';
 /*
   Generated class for the WelcomePage page.
@@ -20,4 +20,10 @@ export class WelcomePage {
   };
 
   constructor(private nav: NavController) {}
+
+
+  redirect(){
+    this.nav.push(MypagePage);
+
+  }
 }
