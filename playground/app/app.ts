@@ -23,8 +23,6 @@ export class MyApp {
     
 
     platform.ready().then(() => {
-      
-Splashscreen.hide();
 
         
 /* if(navigator && navigator.splashscreen) {
