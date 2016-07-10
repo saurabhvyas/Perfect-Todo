@@ -8,7 +8,7 @@ import{Splashscreen} from 'ionic-native';
 import{Storage,SqlStorage} from 'ionic-angular';
 
 import {DataService} from './providers/data/data';
-import {TestPage} from './pages/test/test';
+
 import {WelcomePage} from './pages/welcome/welcome';
 
 

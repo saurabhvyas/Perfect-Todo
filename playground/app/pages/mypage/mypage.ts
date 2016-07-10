@@ -344,18 +344,28 @@ this.data.getcompletedtodo().then((tx)=> {
 let storage = new Storage(SqlStorage);
 
 
-storage.get('Firstvisit').then((data) => {
+
+storage.get('First').then((data) => {
 
 console.log(data);
 
-if (data===false){
+if (data === 'false'){
 
+console.log('not the first visit');
 
 
 }
-else if (data===true)   {
+else if (data === undefined)   {
 
-storage.set('Firstvisit', 'false');
+storage.set('First', 'false').then((tx)=>{
+  console.log(tx);
+
+},
+(err)=>{
+  console.log(err);
+
+}
+)
 
 console.log('First  visit');
 
@@ -366,6 +376,9 @@ console.log('First  visit');
 
 }
 
+},(err)=>{
+
+  console.log('error in retrieving firstvisit key ');
 });
 
 
