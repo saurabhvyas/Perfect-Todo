@@ -9,9 +9,14 @@
 </ion-navbar>
 
 <ion-content >
+
+
+
+
+
   <h2 class="padding"> Pending : {{todoitems.length}}  </h2>
   
-  <p *ngIf="completed" > No Pending Todo's Click on add to add more </p>
+  <p *ngIf="completed"  class="padding"> No Pending Todo's Click on add to add more </p>
   <ion-list >
     
   <ion-item-sliding *ngFor = "let item of todoitems; let i=index"> 

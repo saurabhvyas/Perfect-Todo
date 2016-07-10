@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NavParams,NavController } from 'ionic-angular';
 import {NewpagePage} from '../newpage/newpage';
-import {Storage} from 'ionic-angular';
-import {SqlStorage,Alert} from 'ionic-angular';
+
+import {Alert} from 'ionic-angular';
 import {todo} from '../todo';
 import {Modal,ViewController} from 'ionic-angular';
-
+import{Storage,SqlStorage} from 'ionic-angular';
+import {WelcomePage} from '../welcome/welcome';
 import {DataService} from '../../providers/data/data';
 
 /*
@@ -339,7 +340,44 @@ this.data.getcompletedtodo().then((tx)=> {
   
 
   constructor(private nav: NavController,params:NavParams,data:DataService  ){
+
+let storage = new Storage(SqlStorage);
+
+
+storage.get('Firstvisit').then((data) => {
+
+console.log(data);
+
+if (data===false){
+
+
+
+}
+else if (data===true)   {
+
+storage.set('Firstvisit', 'false');
+
+console.log('First  visit');
+
+
+// navigate to slides page
+ nav.push(WelcomePage);
+
+
+}
+
+});
+
+
+
+
+
+
+
+
+
     this.alert=alert;
+  
     
  //   console.log(this.todoitems);
     
@@ -353,6 +391,6 @@ this.evaluatefinished();
     
  
    
-
   }
+  
 }
