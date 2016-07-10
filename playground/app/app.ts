@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
+import {enableProdMode} from '@angular/core';
 import {StatusBar} from 'ionic-native';
 
 import {MypagePage} from './pages/mypage/mypage';
@@ -23,6 +24,7 @@ export class MyApp {
     
 
     platform.ready().then(() => {
+Splashscreen.hide();
 
         
 /* if(navigator && navigator.splashscreen) {
@@ -42,4 +44,5 @@ navigator.splashscreen.hide();
   }
 }
 
+enableProdMode();
 ionicBootstrap(MyApp)
