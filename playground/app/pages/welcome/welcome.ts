@@ -14,7 +14,7 @@ import {Slides} from 'ionic-angular';
 export class WelcomePage {
 
  mySlideOptions = {
-    initialSlide: 1,
+    initialSlide: 0,
     loop: true,
     pager:true
   };
@@ -23,7 +23,8 @@ export class WelcomePage {
 
 
   redirect(){
-    this.nav.push(MypagePage);
+    this.nav.pop();
+
 
   }
 }
