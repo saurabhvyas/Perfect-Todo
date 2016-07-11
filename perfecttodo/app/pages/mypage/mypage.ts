@@ -305,18 +305,22 @@ this.data.getcompletedtodo().then((tx)=> {
   
   private like=(item:any,i:number)=>{
    
-    
+       console.log('completed item is');
+   console.log(item);
     
 console.log('completed a todo');
 
 
   // this.todoitems.splice(i,1);
-   
+
+
+          
           this.data.removetodo(item.id).then((tx)=> {
          
           console.log(tx.res.rows);
+
           this.todoitems.splice(i,1);
-           this.evaluatefinished();
+          this.evaluatefinished();
           
         },
        (err)=> {
@@ -325,16 +329,19 @@ console.log('completed a todo');
           
         });
    
+
+
    this.completeditems.push(item);
    
    
    // this.items[i]="I liked " + this.items[i];
-    
+   console.log(this.completeditems);
+
   
     
   this.data.addcompletedtodo(item.todo,item.priority,item.description).then((tx)=> {
     
-    console.log(tx.res);
+    console.log(tx);
     
     
   },(err)=>{

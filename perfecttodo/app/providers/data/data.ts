@@ -62,6 +62,9 @@ addcompletedtodo(todo:string,priority:string,description:string){
   
   var id;
  
+ console.log('in data.ts file going to run query to insert a completed todo');
+ console.log(todo);
+ 
   this.storage.query('SELECT MAX(id) from saurabh_completed_todo  ').then(function(tx){
     
   id=tx.res;
@@ -73,6 +76,9 @@ addcompletedtodo(todo:string,priority:string,description:string){
      
     
   });
+
+  id=id+1;
+
   
   /* var description= `Removing the line-height indeed makes your text align with your placeholder-text, but it doesn't properly solve your problem since you need to adapt your design to this flaw (it's not a bug). Adding vertical-align won't do the deal either. I haven't tried in all browsers, but it doesn't work in Safari 5.1.4 for sure.
 
@@ -85,7 +91,7 @@ Edit: Found the plugin! jquery.placeholder.min.js provides you with both full st
  
  */
   
-   return this.storage.query('INSERT INTO saurabh_completed_todo(id,todo,description,priority) VALUES(? , ?,?,?)',[++id,todo,description,priority]);
+   return this.storage.query('INSERT INTO saurabh_completed_todo(id,todo,description,priority) VALUES(? , ?,?,?)',[id,todo,description,priority]);
   
 }
 
