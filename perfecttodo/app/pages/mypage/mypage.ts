@@ -16,18 +16,29 @@ import {DataService} from '../../providers/data/data';
   Ionic pages and navigation.
 */
 
-
+ 
 
 
 @Component({
   template: `
+  
+
+
+
+
   <ion-content padding>
-    <h2>{{todo.todo}}</h2>
+    <h2 primary>{{todo.todo}}</h2>
+
+    <hr>
+
     
  <h3>  Description </h3>
  
- <p> {{todo.description}} </p>
+
  
+ <p> {{todo.description}} </p>
+ <hr>
+
  <h3>
  
  Priority
@@ -39,7 +50,7 @@ import {DataService} from '../../providers/data/data';
  {{todo.priority}}
  </p>
    
-    <button (click)="close()">Close</button>
+    <button style="width:90%; margin-left:10px; margin-right:10px; " (click)="close()">Close</button>
   </ion-content>`
 })
 class MyModal {
