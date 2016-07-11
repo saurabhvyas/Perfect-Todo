@@ -317,7 +317,9 @@ console.log('completed a todo');
           
           this.data.removetodo(item.id).then((tx)=> {
          
-          console.log(tx.res.rows);
+         console.log('delete query transaction');
+         
+          console.log(tx);
 
           this.todoitems.splice(i,1);
           this.evaluatefinished();
