@@ -366,6 +366,9 @@ let storage = new Storage(SqlStorage);
 
 
 
+data.cleantodo();
+
+
 storage.get('First').then((data) => {
 
 console.log(data);

@@ -9,43 +9,119 @@ storage:any;
 
   constructor() {
     this.storage = new Storage(SqlStorage);
-   // this.storage.query('DROP TABLE todo');
-    //this.storage.query('DROP TABLE completed_todo');
-    
+  
+    this.storage.clear(); // this will remove all kv pairs and always show start screen , remove on production
+
+  
    this.storage.query('CREATE TABLE IF NOT EXISTS saurabh_todo (id INTEGER  , todo TEXT, description TEXT , priority TEXT)');
     this.storage.query('CREATE TABLE IF NOT EXISTS saurabh_completed_todo (id INTEGER  , todo TEXT, description TEXT , priority TEXT)');
+  }
+
+  cleantodo(){
+
+
+
+this.storage.query('DELETE  FROM saurabh_todo').then(()=>{
+
+this.storage.query('DELETE  FROM saurabh_completed_todo').then(function(){
+
+console.log('nested query perfomed');
+
+
+});
+
+});
+
+
+
+
+  
+
+
+
+   
+    
+
   }
 
 addtodo(todo:string,priority:string,description:string){
  
 
 
-  var id;
- 
-  this.storage.query('SELECT MAX(id) from saurabh_todo  ').then(function(tx){
-    
-  id=tx.res;
-  console.log(id);
 
- id=id+1;
+ let p1 =  this.storage.query('SELECT MAX(id) from saurabh_todo ');
+
+
+
  
+
+ return p1.then((tx)=>{
+    
+    let id = 0;
+console.log(' id tx');
+
+if (tx.res.rows[0]['MAX(id)']===null){
+
+
+}
+
+else{
+id = (tx.res.rows[0]['MAX(id)']);
+}
+
+
   
-  },
-  function(err){
-  console.log('select max err is ' + err);
+id= id + 1;
+
+console.log('new value of id is ' + id);
+
+
+ this.storage.query('INSERT INTO saurabh_todo VALUES(?,?,?,?)',[id,todo,description,priority]).then((tx)=>{
+
+console.log(id);
+
+   console.log('insertion tx');
+   console.log(tx);
+
+return Promise.resolve(tx);
+
+ },(err)=>{
+
+   console.log(err);
+
+return Promise.reject(err);
+
+ })
+
+
+ })
+ 
+
+ 
+
+   
      
+
+     
+
+     
+
+     
+  
+ 
+
+
+}
+
+  /*.then( ()=>{
+    return  this.storage.query('INSERT INTO saurabh_todo(id,todo,description,priority) VALUES(?,?,?,?)',[id,todo,description,priority])
+   
     
-  }).then(()=>{
-
-    return this.storage.query('INSERT INTO saurabh_todo(id,todo,description,priority) VALUES(?,?,?,?)',[id,todo,description,priority]);
-
-
-
-  },()=>{
-
-return Promise.reject('Insertion couldnt happen possibly becaise of bad id');
-
   });
+  
+  */
+
+  
   
   
 
@@ -56,12 +132,12 @@ return Promise.reject('Insertion couldnt happen possibly becaise of bad id');
  
  
   
-  // return this.storage.query('INSERT INTO saurabh_todo VALUES(?,?,?,?)',[id,todo,description,priority]);
+   
  
     
 
 
-}
+
 
 addcompletedtodo(todo:string,priority:string,description:string){
   
@@ -73,27 +149,22 @@ addcompletedtodo(todo:string,priority:string,description:string){
   this.storage.query('SELECT MAX(id) from saurabh_completed_todo  ').then(function(tx){
     
   id=tx.res;
+  id=id+1;
+
+
+return this.storage.query('INSERT INTO saurabh_completed_todo(id,todo,description,priority) VALUES(? , ?,?,?)',[id,todo,description,priority]);
+
   
   
   },
   function(err){
   console.log(err);
-     
+      return Promise.reject('Insertion couldnt be performed possibly because of bad id');
     
-  }).then(()=>{
-
-id=id+1;
-
-return this.storage.query('INSERT INTO saurabh_completed_todo(id,todo,description,priority) VALUES(? , ?,?,?)',[id,todo,description,priority]);
-
-
-  },()=>{
-
-    return Promise.reject('Insertion couldnt be performed possibly because of bad id');
-
-
   });
   
+  
+ 
 
   
 
