@@ -307,9 +307,10 @@ this.data.getcompletedtodo().then((tx)=> {
    
     
     
+console.log('completed a todo');
 
 
-   this.todoitems.splice(i,1);
+  // this.todoitems.splice(i,1);
    
           this.data.removetodo(item.id).then((tx)=> {
          

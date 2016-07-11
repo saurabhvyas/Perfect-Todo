@@ -19,10 +19,10 @@
   <p *ngIf="completed"  class="padding"> No Pending Todo's Click on add to add more </p>
   <ion-list >
     
-  <ion-item-sliding *ngFor = "let item of todoitems | async ; let i=index"> 
+  <ion-item-sliding *ngFor = "let item of todoitems  ; let i=index"> 
     <ion-item (click)="clickeventhandler(item)" >
       <ion-icon #myelement *ngIf="parameter" md="md-heart" ></ion-icon>
-      <h2 #myelement2 >{{   item.todo }}  
+      <h2 #myelement2 >{{   item.todo  }}  
         
         </h2>
 
@@ -59,9 +59,9 @@
   <h2 class="padding">Completed : {{completeditems.length}} </h2> 
   
   <ion-list>
-     <ion-item  (click)="clickeventhandler(citem)"  *ngFor = "let citem of completeditems |  async ">  
+     <ion-item  (click)="clickeventhandler(citem)"  *ngFor = "let citem of completeditems  ">  
       
-      <li>{{   citem.todo }}</li>
+      <li>{{   citem.todos}}</li>
 
          <p *ngIf="citem.priority === 'high'"  id="strip"> High  </p>
            <p *ngIf="citem.priority === 'medium'"  id="strip_yellow"> Medium  </p>
