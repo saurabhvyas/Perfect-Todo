@@ -15,7 +15,7 @@ export class WelcomePage {
 
  mySlideOptions = {
     initialSlide: 0,
-    loop: true,
+    loop: false,
     pager:true
   };
 

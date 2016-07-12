@@ -31,8 +31,17 @@
   </textarea>
 
   
-    <h2 id="newpageheading" > Priority </h2>
+    <h2 id="newpageheading" > Priority
+      
+      
  
+      
+       </h2>
+
+        <span  *ngIf="priority === 'low'"  id="strip_pink"> {{priority}} </span>
+      <span  *ngIf="priority === 'medium'"  id="strip_yellow"> {{priority}} </span>
+      <span *ngIf="priority === 'high'"  id="strip"> {{priority}} </span>
+     
  <div class="center">
  <button (click)="setpriority()" id="prioritybtn" > Set Priority </button>
  
