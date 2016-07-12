@@ -10,7 +10,7 @@ storage:any;
   constructor() {
     this.storage = new Storage(SqlStorage);
   
-    this.storage.clear(); // this will remove all kv pairs and always show start screen , remove on production
+  //  this.storage.clear(); // this will remove all kv pairs and always show start screen , remove on production
 
   
    this.storage.query('CREATE TABLE IF NOT EXISTS saurabh_todo (id INTEGER  , todo TEXT, description TEXT , priority TEXT)');
@@ -127,7 +127,7 @@ addcompletedtodo(todo:string,priority:string,description:string){
  console.log(todo);
  
 // this is the promise for first query 
- let p1 =  this.storage.query('SELECT MAX(id) from saurabh_completed_todo  ')
+ let p1 =  this.storage.query('SELECT MAX(id) from saurabh_completed_todo  ');
  
  // this will return the promise for nested query
  return p1.then((tx)=>{
@@ -168,7 +168,7 @@ return Promise.reject(err);
 
  })
 
- });
+ })
 
 
   

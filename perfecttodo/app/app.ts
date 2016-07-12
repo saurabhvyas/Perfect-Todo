@@ -52,5 +52,5 @@ navigator.splashscreen.hide();
   }
 }
 
-// enableProdMode();
+ enableProdMode();
 ionicBootstrap(MyApp)
