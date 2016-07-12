@@ -48,12 +48,13 @@ addtodo(todo:string,priority:string,description:string){
  
 
 
+// promise for first query 
 
  let p1 =  this.storage.query('SELECT MAX(id) from saurabh_todo ');
 
 
 
- 
+ // return the final promise (insertion promise) , promises are nested 
 
  return p1.then((tx)=>{
     
@@ -113,55 +114,66 @@ return Promise.reject(err);
 
 }
 
-  /*.then( ()=>{
-    return  this.storage.query('INSERT INTO saurabh_todo(id,todo,description,priority) VALUES(?,?,?,?)',[id,todo,description,priority])
-   
-    
-  });
-  
-  */
 
-  
-  
-  
-
-
- // var priority = "medium";
  
- 
- 
- 
-  
-   
- 
-    
-
 
 
 
 addcompletedtodo(todo:string,priority:string,description:string){
   
-  var id;
+  
  
  console.log('in data.ts file going to run query to insert a completed todo');
  console.log(todo);
  
-  this.storage.query('SELECT MAX(id) from saurabh_completed_todo  ').then(function(tx){
+// this is the promise for first query 
+ let p1 =  this.storage.query('SELECT MAX(id) from saurabh_completed_todo  ')
+ 
+ // this will return the promise for nested query
+ return p1.then((tx)=>{
     
-  id=tx.res;
-  id=id+1;
+    let id=0;
+
+  id=tx.res.rows[0]['MAX(id)'];
+
+  if(id===null) {
+
+id=0;
 
 
-return this.storage.query('INSERT INTO saurabh_completed_todo(id,todo,description,priority) VALUES(? , ?,?,?)',[id,todo,description,priority]);
+  }
+
+  else {
+
+id=id+1;
+
+  }
+  
+console.log('new value of id is '+ id );
+
+
+ this.storage.query('INSERT INTO saurabh_completed_todo(id,todo,description,priority) VALUES(? , ?,?,?)',[id,todo,description,priority]).then((tx)=>{
+
+
+console.log('in data .ts returning completed todo tx');
+console.log(tx);
+
+return Promise.resolve(tx);
+
+
+ },(err)=>{
+
+return Promise.reject(err);
+
+
+ })
+
+ });
+
 
   
   
-  },
-  function(err){
-  console.log(err);
-      return Promise.reject('Insertion couldnt be performed possibly because of bad id');
-    
-  });
+ 
   
   
  

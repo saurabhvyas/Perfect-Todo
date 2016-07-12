@@ -160,7 +160,7 @@ export class MypagePage {
  
  console.log('teffffst');
  
- console.dir(  newarr[0]);
+
  
  
  var newar2=newarr.map((i)=>{
@@ -319,6 +319,8 @@ console.log('completed a todo');
          
          console.log('delete query transaction');
          
+         console.log('deleted todo tx');
+
           console.log(tx);
 
           this.todoitems.splice(i,1);
@@ -337,12 +339,16 @@ console.log('completed a todo');
    
    
    // this.items[i]="I liked " + this.items[i];
+   console.log("completed items");
+   
    console.log(this.completeditems);
 
   
     
   this.data.addcompletedtodo(item.todo,item.priority,item.description).then((tx)=> {
     
+    console.log('completetodo tx');
+
     console.log(tx);
     
     
@@ -366,7 +372,7 @@ let storage = new Storage(SqlStorage);
 
 
 
-data.cleantodo();
+// data.cleantodo(); 
 
 
 storage.get('First').then((data) => {
