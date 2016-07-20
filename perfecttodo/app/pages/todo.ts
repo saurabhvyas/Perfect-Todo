@@ -1,6 +1,6 @@
 
 
-export class todo {
+export interface todo {
     
     
     id:number;

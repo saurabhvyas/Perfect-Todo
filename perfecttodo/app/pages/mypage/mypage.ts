@@ -163,7 +163,7 @@ export class MypagePage {
 
  
  
- var newar2=newarr.map((i)=>{
+ var newar2=newarr.map((i:any)=>{
    
   
    
@@ -211,7 +211,7 @@ this.data.getcompletedtodo().then((tx)=> {
  
  console.log(newarr);
  
- var newar2=newarr.map((i)=>{
+ var newar2=newarr.map((i:any)=>{
    
   // console.log(i);
    
