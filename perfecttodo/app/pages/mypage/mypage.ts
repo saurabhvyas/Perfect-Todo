@@ -117,6 +117,15 @@ export class MypagePage {
     
     
   }
+
+  cleancompletedtodo(){
+
+this.completeditems=[];
+
+ console.log('test');
+    this.data.cleancompletedtodo();
+
+  }
   
   evaluatefinished=()=> {
        if (this.todoitems.length===0) {

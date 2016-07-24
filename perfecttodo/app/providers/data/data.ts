@@ -17,6 +17,16 @@ storage:any;
     this.storage.query('CREATE TABLE IF NOT EXISTS saurabh_completed_todo (id INTEGER  , todo TEXT, description TEXT , priority TEXT)');
   }
 
+
+cleancompletedtodo(){
+
+  this.storage.query('DELETE FROM saurabh_completed_todo').then(()=>{
+  
+  console.log('successfully completed clean completedtodo');
+  
+
+  });
+}
   cleantodo(){
 
 
