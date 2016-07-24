@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { NavParams,NavController } from 'ionic-angular';
 import {NewpagePage} from '../newpage/newpage';
+
 
 import {Alert} from 'ionic-angular';
 import {todo} from '../todo';
@@ -29,11 +30,19 @@ import {DataService} from '../../providers/data/data';
   <ion-content padding>
     <h2 primary>{{todo.todo}}</h2>
 
+    <button outline danger> Remove </button>
+
+
     <hr>
 
     
  <h3>  Description </h3>
  
+
+<ion-item *ngIf="editmode_enabled">
+
+  <ion-textarea [(ngModel)]="model_description"></ion-textarea>
+</ion-item>
 
  
  <p> {{todo.description}} </p>
@@ -44,23 +53,58 @@ import {DataService} from '../../providers/data/data';
  Priority
  
  </h3>
+  <ion-input *ngIf="editmode_enabled">  </ion-input>
  
  <p>
  
  {{todo.priority}}
  </p>
+
+<span id="cta" (click)="editmode_enabled=true">
+  <ion-icon ios="ios-add" md="md-add"></ion-icon>
+
+  </span>
+
    
-    <button style="width:90%; margin-left:10px; margin-right:10px; " (click)="close()">Close</button>
-  </ion-content>`
+    <button style="width:90%; margin-left:10px; position:fixed; bottom:10px; margin-right:10px; " (click)="close()">Back</button>
+  </ion-content>`,
+ 
 })
-class MyModal {
+class MyModal implements OnInit {
   
   todo:todo;
+  
+  model_todo:any;
+  model_priority:any;
+  model_description:any;
+  editmode_enabled:any=false;
 
+  ngOnInit()    { 
+
+this.model_description=this.todo.description;
+this.model_priority=this.todo.priority;
+
+   }
+
+modifytodo(){
+
+this.data.modifytodo(this.model_todo,this.model_priority,this.model_description).then((tx)=>{
+
+
+},(err)=>{
+
+  console.log(`err is ${err.message}`);
+
+
+});
+
+
+
+}
   
   
   constructor(params:NavParams,
-    private viewCtrl: ViewController) {
+    private viewCtrl: ViewController,private data:DataService) {
       
       this.todo=params.get('todo');
       

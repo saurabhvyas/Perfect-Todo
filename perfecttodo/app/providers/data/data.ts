@@ -18,12 +18,21 @@ storage:any;
   }
 
 
+modifytodo(todo:string,priority:string,description:string)
+{
+
+return this.storage.query('UPDATE saurabh_todo SET priority = ? todo = ? , description= ?',[priority,todo,description]);
+
+
+
+
+}
 cleancompletedtodo(){
 
   this.storage.query('DELETE FROM saurabh_completed_todo').then(()=>{
   
   console.log('successfully completed clean completedtodo');
-  
+
 
   });
 }
