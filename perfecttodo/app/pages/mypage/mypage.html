@@ -59,7 +59,9 @@
   
   <h2 class="padding">Completed : {{completeditems.length}} </h2> 
   
-  <span (click)="cleancompletedtodo()"> Clean Completed Todo's </span>
+   <button *ngIf="completeditems.length!==0" (click)="cleancompletedtodo()">    <span > Clean Completed Todo's </span>  </button>  
+ 
+ 
 
   <ion-list>
      <ion-item  (click)="clickeventhandler(citem)"  *ngFor = "let citem of completeditems  ">  
