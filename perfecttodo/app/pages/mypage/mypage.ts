@@ -46,7 +46,7 @@ import {DataService} from '../../providers/data/data';
 </ion-item>
 
  
- <p *ngIf="editmode_enabled===false"> {{todo.description}} </p>
+ <p *ngIf="editmode_enabled===false"> {{model_description}} </p>
  <hr>
 
  <h3>
@@ -62,10 +62,10 @@ import {DataService} from '../../providers/data/data';
  </ion-item>
 
  <div  *ngIf="editmode_enabled===false">
-<p *ngIf="evaluatepriority('high')"  id="strip" >        {{todo.priority}}             </p>
-<p *ngIf="evaluatepriority('medium')"  id="strip_yellow" >        {{todo.priority}}             </p>
+<p *ngIf="evaluatepriority('high')"  id="strip" >        {{model_priority}}             </p>
+<p *ngIf="evaluatepriority('medium')"  id="strip_yellow" >        {{model_priority}}             </p>
 
- <p *ngIf="evaluatepriority('low')"  id="strip_pink" >        {{todo.priority}}             </p>
+ <p *ngIf="evaluatepriority('low')"  id="strip_pink" >        {{model_priority}}             </p>
  
  </div>
 
@@ -167,6 +167,8 @@ removetodo(){
          
           console.log(tx.res.rows);
           
+          // add code here to remove the modal
+
           
 
           
@@ -258,7 +260,7 @@ export class MypagePage {
     todomodal.onDismiss((data)=>{
 
     this.ionViewWillEnter();
-    
+
 
 
 
