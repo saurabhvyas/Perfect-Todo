@@ -32,7 +32,8 @@ import {DataService} from '../../providers/data/data';
     <h2 primary>{{todo.todo}}</h2>
 
     <button (click)="removetodo()" outline danger> Remove </button>
-
+     
+      <button (click)="clickhandler()" outline > Edit </button>
 
     <hr>
 
@@ -69,10 +70,7 @@ import {DataService} from '../../providers/data/data';
  
  </div>
 
-<span id="cta" (click)="clickhandler()">
-  <ion-icon ios="ios-add" md="md-add"></ion-icon>
 
-  </span>
 
    
     <button style="width:90%; margin-left:10px; position:fixed; bottom:10px; margin-right:10px; " (click)="close()">Back</button>
@@ -169,7 +167,9 @@ removetodo(){
           
           // add code here to remove the modal
 
+          this.viewCtrl.dismiss();
           
+            
 
           
            
