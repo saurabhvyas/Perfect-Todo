@@ -62,10 +62,10 @@ import {DataService} from '../../providers/data/data';
  </ion-item>
 
  <div  *ngIf="editmode_enabled===false">
-<p *ngIf="model_priority === 'high'"  id="strip" >        {{todo.priority}}             </p>
-<p *ngIf="model_priority === 'medium'"  id="strip_yellow" >        {{todo.priority}}             </p>
+<p *ngIf="evaluatepriority('high')"  id="strip" >        {{todo.priority}}             </p>
+<p *ngIf="evaluatepriority('medium')"  id="strip_yellow" >        {{todo.priority}}             </p>
 
- <p *ngIf="model_priority === 'low'"  id="strip_pink" >        {{todo.priority}}             </p>
+ <p *ngIf="evaluatepriority('low')"  id="strip_pink" >        {{todo.priority}}             </p>
  
  </div>
 
@@ -80,6 +80,22 @@ import {DataService} from '../../providers/data/data';
  
 })
 class MyModal implements OnInit {
+
+  evaluatepriority(type:string):boolean{
+
+   if(this.model_priority.indexOf(type)>=0){
+
+     return true;
+
+
+   }
+   else {
+
+ return false;
+
+   }
+
+  }
   
   todo:todo;
   
@@ -107,6 +123,8 @@ this.model_priority=this.todo.priority;
      }
 
 else if(this.editmode_enabled===true){
+
+console.log(`the model priority is ${this.model_priority}`);
 
 this.data.modifytodo(this.model_todo,this.model_priority,this.model_description,this.model_id).then((tx)=>{
 
@@ -277,6 +295,8 @@ this.completeditems=[];
     
     
   }
+
+  
   
   ionViewWillEnter=()=>  {
     

@@ -26,10 +26,10 @@
         
         </h2>
 
-         <p *ngIf="item.priority === 'high'"  id="strip"> High  </p>
-           <p *ngIf="item.priority === 'medium'"  id="strip_yellow"> Medium  </p>
+         <p *ngIf="item.priority.indexOf('high') >=0"  id="strip"> High  </p>
+           <p *ngIf="item.priority.indexOf('medium') >=0 "  id="strip_yellow"> Medium  </p>
     
-             <p *ngIf="item.priority === 'low'"  id="strip_pink"> Low  </p>
+             <p *ngIf="item.priority.indexOf('low') >=0 "  id="strip_pink"> Low  </p>
        
     
     </ion-item> 
