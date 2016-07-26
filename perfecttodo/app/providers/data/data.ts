@@ -18,10 +18,10 @@ storage:any;
   }
 
 
-modifytodo(todo:string,priority:string,description:string)
+modifytodo(todo:string,priority:string,description:string,id:string)
 {
 
-return this.storage.query('UPDATE saurabh_todo SET priority = ? todo = ? , description= ?',[priority,todo,description]);
+return this.storage.query("UPDATE saurabh_todo SET priority = ' " + priority + " ' ,  todo = ' " + todo + " ' , description = ' " + description + " '  WHERE id = ' " + id +  " ' ");
 
 
 

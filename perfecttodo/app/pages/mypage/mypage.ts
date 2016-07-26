@@ -30,7 +30,7 @@ import {DataService} from '../../providers/data/data';
   <ion-content padding>
     <h2 primary>{{todo.todo}}</h2>
 
-    <button outline danger> Remove </button>
+    <button (click)="removetodo()" outline danger> Remove </button>
 
 
     <hr>
@@ -45,7 +45,7 @@ import {DataService} from '../../providers/data/data';
 </ion-item>
 
  
- <p> {{todo.description}} </p>
+ <p *ngIf="editmode_enabled===false"> {{todo.description}} </p>
  <hr>
 
  <h3>
@@ -53,14 +53,19 @@ import {DataService} from '../../providers/data/data';
  Priority
  
  </h3>
-  <ion-input *ngIf="editmode_enabled">  </ion-input>
+
+ <ion-item  *ngIf="editmode_enabled">
+
+  <ion-input placeholder="{{todo.priority}}" type="text" >  </ion-input>
  
- <p>
+ </ion-item>
+
+ <p  *ngIf="editmode_enabled===false">
  
  {{todo.priority}}
  </p>
 
-<span id="cta" (click)="editmode_enabled=true">
+<span id="cta" (click)="clickhandler()">
   <ion-icon ios="ios-add" md="md-add"></ion-icon>
 
   </span>
@@ -74,36 +79,108 @@ class MyModal implements OnInit {
   
   todo:todo;
   
+  model_id:any;
   model_todo:any;
   model_priority:any;
   model_description:any;
   editmode_enabled:any=false;
 
   ngOnInit()    { 
+this.model_id=this.todo.id;
 
 this.model_description=this.todo.description;
 this.model_priority=this.todo.priority;
 
    }
 
-modifytodo(){
+   clickhandler(){
 
-this.data.modifytodo(this.model_todo,this.model_priority,this.model_description).then((tx)=>{
+     
+     if(this.editmode_enabled===false){
+     this.editmode_enabled=true;
+
+     }
+
+else if(this.editmode_enabled===true){
+
+this.data.modifytodo(this.model_todo,this.model_priority,this.model_description,this.model_id).then((tx)=>{
+
+this.editmode_enabled=false;
+
+console.log('done');
+
 
 
 },(err)=>{
 
-  console.log(`err is ${err.message}`);
+console.log(err);
 
 
 });
 
+}
 
+
+
+
+
+   }
+
+removetodo(){
+
+  var alert = Alert.create({
+      
+      title:'Are you sure you want to delete this todo ?',
+      buttons:[
+        {text:'yes',
+      handler:()=> {
+        
+        console.log("yes clicked");
+        
+       
+        
+        
+        this.data.removetodo(this.todo.id).then((tx)=> {
+         
+          console.log(tx.res.rows);
+          
+          
+
+          
+           
+        },
+       (err)=> {
+          
+          console.log('err' + err);
+          
+        });
+        
+        
+         console.log("removed ");
+    
+    
+        
+      }
+    },
+    {
+      text:'no',
+      role:'cancel',
+      handler:()=> {
+        
+        console.log("cancel clicked");
+        
+      }
+    }
+      ]
+    });
+    
+    this.nav.present(alert);
+    
 
 }
+
   
-  
-  constructor(params:NavParams,
+  constructor(params:NavParams,private nav:NavController,
     private viewCtrl: ViewController,private data:DataService) {
       
       this.todo=params.get('todo');
@@ -155,7 +232,12 @@ export class MypagePage {
     
     this.nav.present(todomodal);
     
-    
+    todomodal.onDismiss((data)=>{
+
+    console.log(`data is ${data}`);
+
+
+    });
     
   
     
