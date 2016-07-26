@@ -21,6 +21,7 @@ import {DataService} from '../../providers/data/data';
 
 
 @Component({
+  
   template: `
   
 
@@ -56,14 +57,17 @@ import {DataService} from '../../providers/data/data';
 
  <ion-item  *ngIf="editmode_enabled">
 
-  <ion-input placeholder="{{todo.priority}}" type="text" >  </ion-input>
+  <ion-input placeholder="{{todo.priority}}"  [(ngModel)]="model_priority" type="text" >  </ion-input>
  
  </ion-item>
 
- <p  *ngIf="editmode_enabled===false">
+ <div  *ngIf="editmode_enabled===false">
+<p *ngIf="model_priority === 'high'"  id="strip" >        {{todo.priority}}             </p>
+<p *ngIf="model_priority === 'medium'"  id="strip_yellow" >        {{todo.priority}}             </p>
+
+ <p *ngIf="model_priority === 'low'"  id="strip_pink" >        {{todo.priority}}             </p>
  
- {{todo.priority}}
- </p>
+ </div>
 
 <span id="cta" (click)="clickhandler()">
   <ion-icon ios="ios-add" md="md-add"></ion-icon>
@@ -87,6 +91,7 @@ class MyModal implements OnInit {
 
   ngOnInit()    { 
 this.model_id=this.todo.id;
+this.model_todo=this.todo.todo;
 
 this.model_description=this.todo.description;
 this.model_priority=this.todo.priority;
