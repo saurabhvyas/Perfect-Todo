@@ -257,7 +257,9 @@ export class MypagePage {
     
     todomodal.onDismiss((data)=>{
 
-    console.log(`data is ${data}`);
+    this.ionViewWillEnter();
+    
+
 
 
     });
