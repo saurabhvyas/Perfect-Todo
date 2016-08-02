@@ -222,9 +222,17 @@ removetodo(id:number){
 
   
    return this.storage.query("DELETE  FROM saurabh_todo WHERE id=' " + id + " ' ") ;
-   
+      
    
   
+}
+
+removecompletedtodo(id:number){
+
+   console.log(id);
+
+  
+   return this.storage.query("DELETE  FROM saurabh_completed_todo WHERE id=' " + id + " ' ") ;
 }
 
   getodo() {

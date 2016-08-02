@@ -159,7 +159,14 @@ removetodo(){
         console.log("yes clicked");
         
        
-        
+        this.data.removecompletedtodo(this.todo.id).then((tx)=>{
+
+console.log(tx.res.rows);
+
+        },(err)=>{
+  console.log('err' + err);
+
+        } );
         
         this.data.removetodo(this.todo.id).then((tx)=> {
          
